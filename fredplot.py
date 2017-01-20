@@ -3,7 +3,7 @@ from fredapi import Fred
 
 display = raw_input("What would you like to display? >> ")
 
-fred = Fred(api_key = "bf4553bb81babdaf14c46693d57579c1")
+fred = Fred(api_key = "api")
 SPY = fred.get_series(display)
 
 plt.plot(SPY)
