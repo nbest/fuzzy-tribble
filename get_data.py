@@ -3,6 +3,8 @@ import datetime
 
 quandl.ApiConfig.api_key = 'o8m4zQE4JiyjM4fhU7G4'
 
+### Downloads historical data from quandl
+
 start = datetime.date(2013,1,1)
 end = datetime.date(2017,1,23)
 
