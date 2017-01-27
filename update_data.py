@@ -39,7 +39,7 @@ else:
 with open('SPY.csv', 'ab') as file:
 	newdata = quandl.get("YAHOO/INDEX_GSPC", start_date = modified_date)
 	print newdata
-	newdata.to_csv(file)
+	newdata.to_csv(file, header = False)
 	file.close()
 
 ### opens the program and removes extra headers
