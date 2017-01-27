@@ -1,36 +1,46 @@
 import csv
 from datetime import datetime, timedelta, date
+import quandl
+
+quandl.ApiConfig.api_key = 'o8m4zQE4JiyjM4fhU7G4'
 
 ### Retrieves the latest date in the file (the bottom of the file)
 
-import csv
 with open('SPY.csv', 'rb') as f:
 	row_count = sum(1 for row in f)
 	f.close()
+print("# of rows:", row_count)
 
 with open('SPY.csv','rb') as g:
 	mycsv = csv.reader(g)
 	mycsv = list(mycsv)
-	text = mycsv[row_count-1][0]
-print(text)
+	text = mycsv[row_count - 1][0]
+print("Most recent data:", text)
 
 ### Updates to the next missing day
 
-date = datetime.strptime(text, "%Y-%m-%d")
+date = datetime.strptime(text, "%Y-%m-%d").date()
+print "Datetime object today", date
 modified_date = date + timedelta(days=1)
-datetime.strftime(modified_date, "%Y-%m-%d")
-print(modified_date)
-print("BREAK")
+print "Next date in series:", modified_date
+print "Today is:", date.today()
 
-### Downloads Quandl data from next missing day to today
+### Downloads Quandl data from next missing day to yesterday
+### Given the 1 day data feed lag, if the newest date is today
+### the program ends as there is no new data
 
 if date.today() == modified_date:
-	print("same")
+	print("No new data")
+	sys.exit()
+	
 else:
-	print("different")
+	modified_date
+	
+with open('SPY.csv', 'ab') as file:
+	newdata = quandl.get("YAHOO/INDEX_GSPC", start_date = modified_date)
+	print newdata
+	newdata.to_csv(file)
+	file.close()
 
-#with open('example.csv', 'ab') as file:
-#	newdata = ['4','4','4']
-#	writer = csv.writer(file)
-#	writer.writerow(newdata)
-#	file.close()
+### opens the program and removes extra headers
+### added to the file by the append method
