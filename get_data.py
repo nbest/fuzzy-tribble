@@ -1,7 +1,7 @@
 import quandl
 import datetime
 
-quandl.ApiConfig.api_key = 'o8m4zQE4JiyjM4fhU7G4'
+quandl.ApiConfig.api_key = '{key}'
 
 ### Downloads historical data from quandl
 
