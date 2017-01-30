@@ -2,7 +2,7 @@ import csv
 from datetime import datetime, timedelta, date
 import quandl
 
-quandl.ApiConfig.api_key = 'o8m4zQE4JiyjM4fhU7G4'
+quandl.ApiConfig.api_key = '{key}'
 
 ### Retrieves the latest date in the file (the bottom of the file)
 
