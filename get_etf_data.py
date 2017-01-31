@@ -12,6 +12,8 @@ quandl.ApiConfig.api_key = 'o8m4zQE4JiyjM4fhU7G4'
 
 end = datetime.date(2017,1,20)
 
+# Retrieves the Quandl data, naming the file key
+
 data = {'SPY':"YAHOO/INDEX_GSPC", 'DOW': "YAHOO/INDEX_DJI", 'RUS3': "GOOG/NYSE_IWV", 
 		"EEM": "GOOG/NYSEARCA_EEM", "EFA": "GOOG/NYSE_EFA", "ICF": "GOOG/NYSEARCA_ICF"}
 
