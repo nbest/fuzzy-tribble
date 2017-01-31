@@ -1,4 +1,10 @@
+import quandl
+from matplotlib import pyplot as plt
+import numpy as np
 import pandas as pd
+import scipy as sp
+import datetime
+import scipy.optimize as scopt
 import os
 import glob
 
@@ -21,4 +27,11 @@ docs = new_name
 	
 for items in docs:
 	exec("%s = pd.read_csv(%r'.csv', index_col = 0, usecols = ['Date','Close'])" % (items, items))
-	
+	exec("%s_pct_change = %s.pct_change()" % (items, items))
+
+def plot_portfolio_returns(returns, title = None):
+	returns.plot(figsize=(12,8))
+	plt.xlabel('Year')
+	plt.ylabel('Returns')
+	if title is not None: plt.title(title)
+	plt.show()
